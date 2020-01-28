@@ -6,7 +6,7 @@
 define(function () {
     var out = {};
 
-    out.main_title = "CryptPad: Zero Knowledge, Collaborative Real Time Editing";
+    out.main_title = "IIFBU: Intelligent Interface for Blind Users";
 
     out.type = {};
     out.type.pad = 'Rich text';

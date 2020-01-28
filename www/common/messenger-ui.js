@@ -7,7 +7,7 @@ define([
     '/common/diffMarked.js',
 ], function ($, Messages, Util, UI, h, DiffMd) {
     'use strict';
-
+    var synth = window.speechSynthesis;
     var debug = console.log;
     debug = function () {};
 
@@ -378,6 +378,8 @@ define([
                 // send unless they're holding a ctrl-key or shift
                 if (!e.ctrlKey && !e.shiftKey) {
                     send(this.value);
+                    var utterThis = new SpeechSynthesisUtterance("Message Sent. Your message is "+this.value);
+                    synth.speak(utterThis);
                     return false;
                 }
 
@@ -401,7 +403,9 @@ define([
                 return false;
             };
             $(input).on('keydown', onKeyDown);
-            $(sendButton).click(function () { send(input.value); });
+            $(sendButton).click(function () { send(input.value);
+            var utterThis = new SpeechSynthesisUtterance("Message Sent. Your message is "+input.value);
+            synth.speak(utterThis);});
 
             return h('div.cp-app-contacts-chat', {
                 'data-key': id,
@@ -569,6 +573,8 @@ define([
                         (message.name || Messages.anonymous) :
                         contactsData[message.author].displayName;
                 common.notify({title: name, msg: message.text});
+                var utterThis = new SpeechSynthesisUtterance("Message recieved from"+name+" the message is"+message.text);
+                synth.speak(utterThis);
             }
             notifyToolbar();
 
