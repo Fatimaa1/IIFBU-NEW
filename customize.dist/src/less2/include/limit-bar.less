@@ -5,18 +5,18 @@
 }
 & {
     .cp-limit-container {
-        @colortheme_green: #5cb85c;
+       
         display: inline-flex;
         flex-flow: column-reverse;
-        width: 100%;
-        margin-top: 20px;
+        width: 0%;
+        margin-top: 0px;
         .cp-limit-bar {
             display: inline-flex;
             justify-content: center;
             align-items: center;
 
-            max-width: 100%;
-            margin: 3px;
+            max-width: 0%;
+            margin: 0px;
             box-sizing: border-box;
             border-top: 1px solid #999;
             background: white;
@@ -29,28 +29,28 @@
             .cp-limit-usage {
                 height: 100%;
                 display: inline-block;
-                background: blue;
+               
                 position: absolute;
                 left: 0;
                 top: 0;
                 z-index: 1; // .usage
                 &.cp-limit-usage-normal {
-                    background: @colortheme_green;
+                    background: white;
                 }
                 &.cp-limit-usage-warning {
-                    background: orange;
+                    background : white;
                 }
                 &.cp-limit-usage-above {
-                    background: red;
+                    background:white;
                 }
             }
             .cp-limit-usage-text {
                 position: relative;
-                color: grey;
+                color:white;
                 text-shadow: 1px 0 2px white, 0 1px 2px white, -1px 0 2px white, 0 -1px 2px white;
                 z-index: 2; // .usageText
                 font-size: @colortheme_app-font-size;
-                font-weight: bold;
+            
             }
         }
         .cp-limit-upgrade {

@@ -2620,7 +2620,7 @@ define([
             //createHelper('#', "TODO: password protection adds another layer of security ........") // TODO
         ]);
 
-        var right = h('span.fa.fa-chevron-right.cp-creation-template-more');
+      /*  var right = h('span.fa.fa-chevron-right.cp-creation-template-more');
         var left = h('span.fa.fa-chevron-left.cp-creation-template-more');
         var templates = h('div.cp-creation-template', [
             left,
@@ -2638,16 +2638,12 @@ define([
                 Messages.creation_rememberHelp
             ])
         ]);
-
+*/
         var createDiv = h('div.cp-creation-create');
         var $create = $(createDiv);
 
         $(h('div#cp-creation-form', [
             owned,
-            expire,
-            password,
-            settings,
-            templates,
             createDiv
         ])).appendTo($creation);
 

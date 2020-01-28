@@ -70,7 +70,7 @@ define([
     var slice = function (coll) {
         return Array.prototype.slice.call(coll);
     };
-
+    var synth = window.speechSynthesis;
     var removeListeners = function (root) {
         slice(root.attributes).map(function (attr) {
             if (/^on/.test(attr.name)) {
@@ -871,6 +871,9 @@ define([
             var id = classes[0];
             if (typeof(id) === 'string') {
                 framework.feedback(id.toUpperCase());
+                var utterThis = new SpeechSynthesisUtterance("Successfully selected" + id);
+                synth.speak(utterThis);
+                console.log("Successfully selected" , id) ;
             }
         });
 

@@ -13,7 +13,7 @@ define([
 ], function ($, Config, ApiConfig, UIElements, UI, Hash, Util, Feedback, h,
 MessengerUI, Messages) {
     var Common;
-
+    var synth = window.speechSynthesis;
     var Bar = {
         constants: {},
     };
@@ -274,6 +274,8 @@ MessengerUI, Messages) {
                     });
                     $nameInput.click(function (e) {
                         e.stopPropagation();
+                        var utterThis = new SpeechSynthesisUtterance("Editing your name");
+                        synth.speak(utterThis);
                         console.log("Editing your name")
                     });
                     $nameInput.on('keydown', function (e) {
@@ -287,6 +289,8 @@ MessengerUI, Messages) {
                             var newName = $nameInput.val(); // TODO clean
                             $nameValue.text(newName);
                             setDisplayName(newName);
+                            var utterThis = new SpeechSynthesisUtterance("Your name has changed to" + newName);
+                            synth.speak(utterThis);
                             console.log("Your name has changed to", newName)
                             return;
                         }
@@ -532,19 +536,13 @@ MessengerUI, Messages) {
         }
 
         var $shareBlock = $('<button>', {
-            'class': 'fa fa-shhare-alt cp-toolbar-share-button',
-            title: Messages.shareButton
+          
         });
         Common.getSframeChannel().event('EV_SHARE_OPEN', {
             hidden: true
         });
         $shareBlock.click(function () {
-            var title = (config.title && config.title.getTitle && config.title.getTitle())
-                        || (config.title && config.title.defaultName)
-                        || "";
-            Common.getSframeChannel().event('EV_SHARE_OPEN', {
-                title: title
-            });
+        
         });
 
         toolbar.$leftside.append($shareBlock);
@@ -690,7 +688,12 @@ MessengerUI, Messages) {
                 $input.hide();
                 $text.show();
                 $pencilIcon.show();
+             
+                var utterThis = new SpeechSynthesisUtterance("your title has been updated to" + name);
+                synth.speak(utterThis);
+                console.log("your title has been updated to", name);
                 $saveIcon.hide();
+
             });
         };
         $input.on('keyup', function (e) {
@@ -701,6 +704,10 @@ MessengerUI, Messages) {
                 $text.show();
                 $pencilIcon.show();
                 $saveIcon.hide();
+                e.stopPropagation();
+                var utterThis = new SpeechSynthesisUtterance("Editing your title");
+                synth.speak(utterThis);
+                console.log("Editing your title", name);
                 //$pencilIcon.css('display', '');
             } else if (e.which === 32) {
                 e.stopPropagation();

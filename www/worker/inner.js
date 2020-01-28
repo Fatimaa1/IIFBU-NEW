@@ -137,3 +137,4 @@ define([
         $container.append('<hr>inner.js ready');
     });
 });
+
