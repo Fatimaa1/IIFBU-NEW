@@ -500,6 +500,9 @@ MessengerUI, Messages) {
             // scroll down chat
             var $messagebox = $content.find('.cp-app-contacts-messages');
             if ($messagebox.length) {
+                var utterThis = new SpeechSynthesisUtterance("Successfully selected" + button);
+                synth.speak(utterThis);
+                // console.log($messagebox[0]['textContent']);
                 $messagebox.scrollTop($messagebox[0].scrollHeight);
             }
 
@@ -1112,13 +1115,19 @@ MessengerUI, Messages) {
             switch(type) {
                 case 1:
                     UI.log(Messages._getKey("notifyJoined", [name]));
+                    var utterThis = new SpeechSynthesisUtterance(Messages._getKey("notifyJoined", [name]));
+                    synth.speak(utterThis);
                     break;
                 case 0:
                     oldname = (!oldname) ? Messages.anonymous : oldname;
                     UI.log(Messages._getKey("notifyRenamed", [oldname, name]));
+                    var utterThis = new SpeechSynthesisUtterance(Messages._getKey("notifyRenamed", [oldname, name]));
+                    synth.speak(utterThis);
                     break;
                 case -1:
                     UI.log(Messages._getKey("notifyLeft", [name]));
+                    var utterThis = new SpeechSynthesisUtterance(Messages._getKey("notifyLeft", [name]));
+                    synth.speak(utterThis);
                     break;
                 default:
                     console.log("Invalid type of notification");

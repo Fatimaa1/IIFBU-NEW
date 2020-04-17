@@ -871,9 +871,10 @@ define([
             var id = classes[0];
             if (typeof(id) === 'string') {
                 framework.feedback(id.toUpperCase());
-                var utterThis = new SpeechSynthesisUtterance("Successfully selected" + id);
+                var button = id.split('button__')[1]
+                var utterThis = new SpeechSynthesisUtterance("Selected" + button);
                 synth.speak(utterThis);
-                console.log("Successfully selected" , id) ;
+                console.log("Successfully selected" , button) ;
             }
         });
 

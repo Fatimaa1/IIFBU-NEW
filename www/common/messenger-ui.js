@@ -573,8 +573,6 @@ define([
                         (message.name || Messages.anonymous) :
                         contactsData[message.author].displayName;
                 common.notify({title: name, msg: message.text});
-                var utterThis = new SpeechSynthesisUtterance("Message recieved from"+name+" the message is"+message.text);
-                synth.speak(utterThis);
             }
             notifyToolbar();
 
